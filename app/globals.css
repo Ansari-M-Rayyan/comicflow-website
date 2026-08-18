@@ -1,0 +1,100 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --font-sans: 'Inter', 'Inter Fallback';
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-serif: var(--font-instrument-serif), 'Instrument Serif', Georgia, serif;
+}
+
+:root {
+  color-scheme: dark;
+  /* PERFECTED COMICFLOW APP PALETTE */
+  --background: #090909; /* Near Black */
+  --foreground: #ffffff; /* Primary Text: White */
+  --card: #111216; /* Cards: Dark Gray */
+  --card-foreground: #ffffff; 
+  --primary: #ff8f31; /* Primary Brand: Orange */
+  --primary-foreground: #ffffff;
+  --muted: #15171d;
+  --muted-foreground: #94a3b8; /* Secondary Text: Gray */
+  --border: rgba(255, 255, 255, 0.1);
+  --ring: #3b82f6; /* Secondary Accent: Blue */
+  --radius: 0.8rem;
+}
+
+/* Base Styles */
+* { @apply border-border; }
+html, body { 
+  background: var(--background); 
+  scroll-behavior: smooth; 
+  overflow-x: hidden; 
+  width: 100%;
+}
+body { @apply bg-background text-foreground font-sans; min-width: 320px; }
+
+/* The Floating Ambient Orbs (Orange & Blue) */
+.ambient { position: absolute; pointer-events: none; border-radius: 9999px; filter: blur(150px); opacity: .16; }
+.ambient-one { width: 36rem; height: 36rem; top: 18rem; left: -16rem; background: #ff8f31; }
+.ambient-two { width: 30rem; height: 30rem; top: 42rem; right: -14rem; background: #3b82f6; opacity: .15; }
+
+/* Typography & Badges */
+.eyebrow { @apply font-mono text-[10px] uppercase tracking-[0.22em] text-slate-500; }
+.pulse-dot { @apply inline-block h-1.5 w-1.5 rounded-full bg-orange-500 shadow-[0_0_12px_#ff8f31]; }
+/* Clean, modern sans-serif font */
+.hero-title { font-family: var(--font-sans); font-weight: 800; letter-spacing: -0.04em; }
+
+/* Premium Orange-to-Gold Gradient */
+.headline-accent { 
+  background: linear-gradient(135deg, #ff8f31 20%, #fbbf24 80%); 
+  -webkit-background-clip: text;
+  background-clip: text; 
+  color: transparent; 
+}
+
+/* Buttons */
+.button-primary, .button-secondary { @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 text-xs font-medium transition duration-300; }
+.button-primary { @apply bg-orange-500 text-[#1b1007] shadow-[0_0_30px_rgba(255,143,49,.28)] hover:bg-orange-400 hover:shadow-[0_0_38px_rgba(255,143,49,.45)]; }
+.desktop-download { display: inline-flex; }
+.mobile-download { display: none; }
+@media (max-width: 639px) { .desktop-download { display: none; } .mobile-download { display: inline-flex; } }
+.button-large { @apply px-6 py-3.5 text-sm; }
+
+/* Mockup Windows (Dark Gray Glass) */
+.mockup { @apply overflow-hidden rounded-2xl border border-white/10 bg-[#111216]/80 shadow-2xl shadow-black/50 backdrop-blur-xl; }
+.dashboard-mockup { box-shadow: 0 35px 100px rgba(0, 0, 0, .5), 0 0 0 1px rgba(255,255,255,.06); }
+.logo-slot { @apply inline-block h-8 w-8 rounded-lg border border-dashed border-orange-400/50 bg-orange-400/10; }
+.logo-hero-slot { @apply mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-dashed border-orange-400/50 bg-orange-400/10 font-mono text-[8px] uppercase tracking-widest text-orange-300; }
+
+/* Placeholder Slots */
+.screenshot-slot { @apply flex min-h-[280px] items-center justify-center bg-[#0d0e12] text-center md:min-h-[360px]; background-image: linear-gradient(rgba(59,130,246,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,.06) 1px, transparent 1px); background-size: 28px 28px; }
+.screenshot-slot span, .screenshot-slot small { display: block; }
+.screenshot-slot span { @apply font-mono text-[10px] uppercase tracking-[0.2em] text-blue-300/70; }
+.screenshot-slot small { @apply mt-2 text-xs text-slate-500; }
+.screenshot-dashboard { @apply min-h-[245px] md:min-h-[390px]; }
+
+.feature-mockup { min-height: 280px; }
+
+/* Premium Frosted Glass Cards */
+.glass-card { 
+  @apply bg-white/[0.02] border border-white/10 backdrop-blur-xl transition-all duration-500 hover:bg-white/[0.05] hover:border-white/20 hover:shadow-[0_0_40px_-15px_rgba(255,143,49,0.2)] hover:-translate-y-2 rounded-2xl; 
+}
+
+/* Animations */
+.reveal { animation: reveal .8s both; }
+.reveal-delay { animation-delay: .15s; }
+@keyframes reveal { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
