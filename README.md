@@ -37,7 +37,7 @@ ComicFlow itself is a desktop application built to solve a specific problem: mos
 
 <div align="center">
   <!-- PLACEHOLDER: READER MODE IMAGE -->
-  <img src="public/reader.png" alt="ComicFlow Reader Mode" width="800" />
+  <img src="public/stats.png" alt="ComicFlow Reader Mode" width="800" />
 </div>
 
 <br />
